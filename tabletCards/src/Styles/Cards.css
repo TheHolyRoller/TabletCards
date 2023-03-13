@@ -1,0 +1,296 @@
+
+/* 
+
+Okay so let's walk through the process of how we make cards. 
+
+First of all we need a responsive container. 
+
+Then we need to put all the cards within this container. 
+
+Next we need to create the HTML structure for the card. 
+
+
+This starts with adding the container for the card. 
+
+Then we add in the contents of that card in the ascending order as 
+we would want it to appear on the screen. 
+
+First we add the container for the title and then the title, 
+then we add the image container. Then the image and then we add the 
+text container and then the text. 
+
+Once that is done we add in the button container and then the button. 
+
+If we want to align things and center things then we can use flex box to align and center 
+things within the container. 
+
+
+Once that structure for one card has been created we then duplicate it for multiple cards. 
+
+Then once the cards have their basic structure it is time to layout them out in a grid. 
+
+So the main container where we are keeping the cards we turn into a Grid container. 
+
+Then we clamp it's width with dynamic view port units and rems. 
+
+Next we add a container query to indicate when it should change. 
+
+This will be for slightly larger or smaller phone screens. 
+
+Then we give the base grid layout for the cards within the Grid container. 
+
+
+Once that is done after a lot of polishing and tweaks then we can move onto making the next 
+component for larger screens. 
+
+
+
+/* In regards to the individual card size we could do several things 
+
+First of all we could clamp the cards width and height. This is a rare case where sometimes 
+it is beneficial to clamp the height of an element. 
+
+Or we could align the cards dimensions to a percentage of its parent container. 
+
+This way as the width of the parent container increases the width of the cards would increase. 
+
+Although this could be really problematic as this could cause the cards to become bloated out 
+of proportion. So clamping would be much the better option.
+
+
+
+
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+*, *::before, *::after{
+
+    /* Remove the padding and margin here  */
+    padding: 0; 
+    margin: 0; 
+    
+    /* Add in the box sizing here  */
+    box-sizing: border-box; 
+    
+    
+    /* Add in the outline and background color here  */
+    
+    
+    }
+    
+    
+    /* Add in the root variables here  */
+    
+    :root{
+    
+        /* Add in the color pallette variables here  */
+        
+        /* Add in the font variables here  */
+        
+        
+        /* Add in the dimensional variables here  */
+        
+        
+        
+        /* Add in the padding and margin variables here  */
+    }
+    
+    
+    html{
+        scroll-behavior: smooth;
+    }
+    
+    body{
+        
+        /* Add in the responsive dimensions here  */
+        width: 110vmax; 
+        max-width: 100vw; 
+        min-height: 100vh;
+        
+        /* Add in the positioning here  */
+        /* This is relative positioning so that we can give nested or super containers absolute 
+        to take up the whole page */
+        position: relative; 
+        /* Remove the padding here  */
+        padding: 0px; 
+        margin: 0px; 
+        
+        /* Add in the font family here  */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-style: oblique;
+    
+        /* Add in the styling and colors in here  */
+        background-color: #444; 
+        color: #fff;
+    }
+    
+    
+    
+    body{
+        
+        /* Center all the content here  */
+        display: grid;
+        place-content: center; 
+        justify-content: center;
+        align-content: center;
+        
+        
+        /* Get rid of any padding and margin here  */
+        padding: 0px; 
+        margin: 0px; 
+        
+        
+    }
+    
+    /* Style the card title here  */
+    .cardTitle{
+        
+        /* Clamp the font size here  */
+        font-size: clamp(0.7rem, 2dvw + 1rem, 3rem); 
+        padding-bottom: 0.7rem; 
+        
+        
+        
+    }
+    
+    
+    /* Add in the super container here  */
+    .cardsContainer{
+        
+    
+        color: black; 
+        background-color: #fff;
+        
+        /* Increase the base clamp width  */
+        width: clamp(25rem, 70vw + 1rem, 75rem); 
+        
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+     place-content: center; 
+     
+    /* gap: 1rem;  */
+
+    }
+    
+    .card{
+        
+        width: clamp(4rem, 22vw + 1rem, 25rem); 
+        overflow: hidden;
+        
+        display: grid;
+        justify-content: center;
+        
+        /* Add in some bottom padding here  */
+        padding-bottom: 2rem; 
+        padding-top: 1rem; 
+    }
+    
+    /* Add in the title container here  */
+    .cardTitleContainer{
+        
+        /* background-color: antiquewhite; */
+        display: grid; 
+        justify-content: center;
+    }
+
+    .imageMainContainer{
+        
+       /* background-color: burlywood; */
+       display: grid; 
+       align-content: center;
+       justify-content: center; 
+        
+    }
+    
+    .imageContainer{
+    
+        /* Why does this only work when I lower the rem?  */
+        width: clamp(9rem, 15vw + 1rem, 20rem); 
+        overflow: hidden;
+        min-height: 10rem;
+        
+        border-radius: 5%; 
+
+        background: url("https://images.unsplash.com/photo-1678648113407-913545723db2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60");
+        
+        background-repeat: no-repeat; 
+        background-size: cover;
+        background-position: center;
+    
+    }
+    
+    .textContainer{
+    
+        overflow: hidden;
+        
+        
+
+    }
+    .paragraph{
+        
+        padding: 0 1rem; 
+        padding-top: 0.5rem; 
+        /* Clamp the width of the paragraph here  */
+        width: clamp(11.3rem, 17vw + 1rem, 19rem); 
+
+    }
+    .buttonContainer{
+
+        display: grid;
+        justify-content: center;
+        padding-top: 0.7rem;
+        padding-bottom: 0.4rem; 
+        align-content: center;
+        
+    }
+    
+    .button{
+    }
+    
+    @container  (min-width: 500px){
+    
+        .cardsContainer{
+            
+            color: blue; 
+        }
+        
+        .card{
+            
+            /* Change the dimensions if needed */
+            
+            
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

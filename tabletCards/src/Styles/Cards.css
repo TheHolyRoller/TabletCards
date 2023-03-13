@@ -210,7 +210,6 @@ of proportion. So clamping would be much the better option.
 
     .imageMainContainer{
         
-       /* background-color: burlywood; */
        display: grid; 
        align-content: center;
        justify-content: center; 
